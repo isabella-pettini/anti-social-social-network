@@ -1,0 +1,24 @@
+{
+  "name": "anti-social-social-network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isabella-pettini/anti-social-social-network.git"
+  },
+  "author": "Isabella Pettini",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isabella-pettini/anti-social-social-network/issues"
+  },
+  "homepage": "https://github.com/isabella-pettini/anti-social-social-network#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0"
+  }
+}
