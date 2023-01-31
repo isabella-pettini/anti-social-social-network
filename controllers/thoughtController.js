@@ -1,5 +1,7 @@
 const { User, Thought } = require('../models');
 
+module.exports = {
+    
 // Get all thoughts
 
 // Get a thought
@@ -13,3 +15,5 @@ const { User, Thought } = require('../models');
 // Create reaction
 
 // Delete reaction
+
+};
