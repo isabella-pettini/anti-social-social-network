@@ -29,7 +29,17 @@ createUser(req, res) {
     });
 },
 
-// Delete a user
+// Delete a user - bonus: remove a users thoughts when deleted
+deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.courseId })
+    .then((user) => 
+    !user
+        ? res.status(404).json({ message: 'No user with that id'})
+        : Thought.deleteMany({ _id: { $in: user.thoughts } })
+    )
+    .then(() => res.json({ message: 'User and Thought deleted'}))
+    .catch((err) => res.status(500).json(err));
+},
 
 // Update a user
 
