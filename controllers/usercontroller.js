@@ -47,7 +47,7 @@ updateUser(req, res) {
         { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
-        )
+    )
         .then((user) =>
         !user
             ? res.status(404).json({ message: 'No user with that id'})
@@ -57,7 +57,32 @@ updateUser(req, res) {
 },
 
 // Add a friend
+addFriend(req, res) {
+    User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $push: { friends: req.params.friendId }},
+        { new: true }
+    )
+        .then((friend) => 
+        !friend
+            ? res.status(404).json({ message: 'No user with that id'})
+            : res.json(friend)
+        )
+        .catch((err) => res.status(500).json(err));
+},
 
 // Delete a friend
-
+deleteFriend(req, res) {
+    User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId }},
+        { new: true }
+    )
+        .then((friend) =>
+        !friend
+            ? res.status(404).json({ message: 'No user with that id'})
+            : res.json(friend)
+        )
+        .catch((err) => res.status(500).json(err));
+}
 };
